@@ -1,0 +1,50 @@
+{
+  "name": "ESS Chrome Extension DRC",
+  "description": "This extension shows total hours of a day in ESS. Developer: Edited By Dhrupad Patel(ReactJs)",
+  "homepage_url": "https://drcsystems.skizzlehr.com/*",
+  "version": "2.0.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "execute.js will run (watch the Chrome DevTools' console)"
+  },
+  "icons": {
+    "48": "DRC.png"
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "js": [
+        "before.js"
+      ],
+      "matches": [
+        "https://drcsystems.skizzlehr.com/regularization-setup",
+        "https://drcsystems.skizzlehr.com/"
+      ]
+    },
+    {
+      "run_at": "document_idle",
+      "js": [
+        "after.js"
+      ],
+      "matches": [
+        "https://drcsystems.skizzlehr.com/regularization-setup",
+        "https://drcsystems.skizzlehr.com/"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*",
+    "https://*/*",
+    "http://*/*",
+    "https://drcsystems.skizzlehr.com/regularization-setup",
+    "https://drcsystems.skizzlehr.com/"
+  ]
+}
